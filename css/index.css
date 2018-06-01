@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  background: #f5f5f5 url(../img/index_bg.png) no-repeat center 0;
+  background-size: contain;
+}
+
+/*-------- 顶部 --------*/
+.head_index{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+}
+.head_index h3{
+  width: 100%;
+  position: relative;
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  height: 1.92rem;
+  line-height: 1.92rem;
+  color: #fff;
+}
+
+.index_main{
+  width: 15.15rem;
+  position: relative;
+  margin: 0 auto;
+  padding-top: 6.2rem;
+}
+
+.index_nav{
+  background-color: #fff;
+  width: 100%;
+  position: relative;
+  border-radius: 0.21rem;
+  -moz-box-shadow: 1px 0px 4px #dfdfdf, 1px 0px 4px #dfdfdf;
+  -webkit-box-shadow:1px 0px 4px #dfdfdf, 1px 0px 4px #dfdfdf;
+  box-shadow:1px 0px 4px #dfdfdf, 1px 0px 4px #dfdfdf;
+}
+.index_nav ul{
+  width: 100%;
+  position: relative;
+  padding: 0.4rem 0;
+}
+.index_nav ul li{
+  width: 5.05rem;
+  float: left;
+  box-sizing: border-box;
+}
+.index_nav ul li a{
+  display: block;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0.4rem 0;
+}
+.index_nav ul li a span{
+  display: block;
+  position: relative;
+}
+.index_nav ul li a span:nth-child(1){
+  width: 2.56rem;
+  margin: 0 auto;
+}
+.index_nav ul li a span:nth-child(1) img{
+  display: block;
+  width: 100%;
+  position: relative;
+}
+.index_nav ul li a span:nth-child(2){
+  width: 100%;
+  text-align: center;
+  font-size: 0.6rem;
+  line-height: 0.92rem;
+  color: #333;
+}

@@ -1,0 +1,134 @@
+@charset "utf-8";
+
+.programme_main{
+	width: 15.15rem;
+	margin: 0 auto;
+	position: relative;
+	padding-bottom: 4.12rem;
+}
+.programme_main_tit{
+	width: 100%;
+	font-size: 0.77rem;
+	padding-top: 0.85rem;
+	line-height: 0.85rem;
+	color: #333;
+	position: relative;
+	font-weight: bold;
+}
+.programme_item{
+	width: 100%;
+	position: relative;
+	border-bottom: 1px solid #d2d2d2;
+	padding-bottom: 0.7rem;
+}
+.programme_item:last-child{
+	border-bottom: none;
+}
+.programme_item_tit{
+	width: 100%;
+	box-sizing: border-box;
+	position: relative;
+	font-size: 0.68rem;
+	line-height: 0.85rem;
+	padding: 0.56rem 0 0.56rem 1.2rem;
+}
+.programme_item_tit span{
+	display: block;
+	position: absolute;
+	width: 1rem;
+	height: 1rem;
+	text-align: center;
+	line-height: 1rem;
+	font-size: 0.52rem;
+	left: 0;
+	top: 0.5rem;
+	border-radius: 0.1rem;
+	font-weight: bold;
+	color: #333;
+}
+.programme_item_tit1 span{
+	background-color: #cddfff;
+	color: #4487ff;
+}
+.programme_item_tit2 span{
+	background-color: #d4faf4;
+	color: #16ccaf;
+}
+.programme_item_tit3 span{
+	background-color: #fff6d1;
+	color: #fccc00;
+}
+.programme_item_tit4 span{
+	background-color: #ffd1d1;
+	color: #fc0000;
+}
+.programme_item_tit5 span{
+	background-color: #d7d1ff;
+	color: #a000fc;
+}
+.programme_item_main{
+	width: 100%;
+	position: relative;
+	-webkit-box-shadow: 0 0 0.21rem #ccc;
+    -moz-box-shadow: 0 0 0.21rem #ccc;
+    box-shadow: 0 0 0.21rem #ccc;
+    border-radius: 0.43rem;
+    box-sizing: border-box;
+    padding: 0 0.45rem 0.52rem;
+}
+.programme_item_main_tit{
+	width: 100%;
+	font-size: 0.6rem;
+	font-weight: bold;
+	color: #333;
+	line-height: 1.28rem;
+	padding-top: 0.43rem;
+	position: relative;
+}
+.programme_item p{
+	width: 100%;
+	position: relative;
+	box-sizing: border-box;
+	font-size: 0.6rem;
+	line-height: 1rem;
+	padding: 0.15rem 0 0.15rem 0.58rem;
+	color: #666;
+}
+.programme_item p span{
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0.15rem;
+}
+.programme_item p.about{
+	box-sizing: border-box;
+}
+.programme_item p.about1{
+	padding-left: 1.88rem;
+}
+.programme_item p.about2{
+	padding-left: 2.56rem;
+}
+.programme_item p.about b{
+	display: block;
+	font-weight: normal;
+	position: absolute;
+	left: 0;
+	top: 0.15rem;
+	text-align: justify;
+	text-align-last: justify;
+}
+.programme_item p.about b:after {
+	content: '';
+	width: 100%;
+	display: inline-block;
+}
+.programme_item p.about1 b{
+	width: 1.88rem;
+}
+.programme_item p.about2 b{
+	width: 2.56rem;
+}
+.programme_item p a{
+	color: #666;
+}

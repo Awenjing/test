@@ -1,0 +1,128 @@
+@charset "utf-8";
+
+body{
+	background-color: #fff;
+}
+
+.guest_page{
+	width: 15.15rem;
+	position: relative;
+	margin: 0 auto;
+	padding-bottom: 4.2rem;
+}
+
+/*标题*/
+.guest_page_tit{
+	width: 100%;
+	position: relative;
+	border-bottom: 1px solid #dbdbdb;
+}
+.guest_page_tit > a{
+	display: block;
+	width: 100%;
+	min-height: 4.4rem;
+	height: auto;
+	box-sizing: border-box;
+	position: relative;
+	padding-left: 3.4rem;
+}
+.guest_page_tit p:first-child{
+	width: 3rem;
+	height: 3rem;
+	overflow: hidden;
+	border-radius: 1.5rem;
+	position: absolute;
+	left: 0;
+	top: 0.64rem;
+}
+.guest_page_tit p:first-child img{
+	display: block;
+	position: relative;
+	width: 100%;
+}
+.guest_page_tit_one p:nth-child(2){
+	width: 10.7rem;
+	color: #333;
+	position: relative;
+	font-size: 0.52rem;
+	line-height: 0.85rem;
+	padding-top: 0.85rem;
+}
+.guest_page_tit_one p:nth-child(2) span{
+	display: block;
+	float: left;
+	text-align: justify;
+}
+.guest_page_tit_one p:nth-child(2) span:nth-child(1){
+	width: 3rem;
+}
+.guest_page_tit_one p:nth-child(2) span:nth-child(2){
+	width: 7.7rem;
+}
+.guest_page_tit_one p:nth-child(3){
+	width: 10.7rem;
+	color: #969696;
+	position: relative;
+	font-size: 0.52rem;
+	line-height: 0.85rem;
+	padding-bottom: 0.21rem;
+}
+.guest_page_tit_one p:nth-child(3) span{
+	display: block;
+	float: left;
+}
+.guest_page_tit_one p:nth-child(3) span:nth-child(1){
+	width: 3rem;
+}
+.guest_page_tit_one p:nth-child(3) span:nth-child(2){
+	width: 7.7rem;
+}
+.guest_page_tit_two p:nth-child(2){
+	width: 10.7rem;
+	color: #333;
+	position: relative;
+	font-size: 0.52rem;
+	line-height: 0.85rem;
+	padding-top: 1.28rem;
+}
+.guest_page_tit_two p:nth-child(2) span{
+	display: block;
+	float: left;
+	text-align: justify;
+}
+.guest_page_tit_two p:nth-child(2) span:nth-child(1){
+	width: 2.7rem;
+}
+.guest_page_tit_two p:nth-child(2) span:nth-child(2){
+	width: 7.8rem;
+}
+
+/*内容*/
+.guest_page_main{
+	width: 100%;
+	position: relative;
+	padding-top: 0.3rem;
+}
+.guest_page_main p{
+	width: 100%;
+	position: relative;
+	font-size: 0.6rem;
+	line-height: 1rem;
+	text-align: justify;
+	padding-bottom: 0.15rem;
+}
+.guest_page_main p.one{
+	text-indent: 2em;
+}
+.guest_page_main p.two{
+	box-sizing: border-box;
+	padding-left: 5.2rem;
+
+}
+.guest_page_main p.two span{
+	display: block;
+	width: 5.2rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+}

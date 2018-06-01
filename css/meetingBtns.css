@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+.meeting_main{
+	width: 13.44rem;
+	margin: 0 auto;
+	position: relative;
+	padding-top: 0.64rem;
+}
+
+.meeting_main ul{
+  width: 100%;
+  position: relative;
+}
+.meeting_main ul li{
+  width: 6.5rem;
+  float: left;
+  box-sizing: border-box;
+  margin-right: 0.44rem;
+  /*background-color: #003b83;*/
+  border-radius: 0.21rem;
+  margin-bottom: 0.45rem;
+  -moz-box-shadow: 0px 2px 5px #c0cdde, 0px 2px 5px #c0cdde;
+  -webkit-box-shadow:0px 2px 5px #c0cdde, 0px 2px 5px #c0cdde;
+  box-shadow:0px 2px 5px #c0cdde, 0px 2px 5px #c0cdde;
+}
+.meeting_main ul li:nth-child(2n){
+	margin-right: 0;
+}
+.meeting_main ul li a{
+  display: block;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0.77rem 0;
+}
+.meeting_main ul li a span{
+  display: block;
+  position: relative;
+}
+.meeting_main ul li a span:nth-child(1){
+  width: 2.13rem;
+  margin: 0 auto;
+}
+.meeting_main ul li a span:nth-child(1) img{
+  display: block;
+  width: 100%;
+  position: relative;
+}
+.meeting_main ul li a span:nth-child(2){
+  width: 100%;
+  text-align: center;
+  font-size: 0.77rem;
+  line-height: 1.28rem;
+  color: #fff;
+}
+
+.meeting_data_icon1{
+  background: #003b83 url(../img/meeting_data_bg_icon1.png) no-repeat bottom right;
+  background-size: 2.18rem 2.35rem;
+}
+.meeting_data_icon2{
+  background: #003b83 url(../img/meeting_data_bg_icon2.png) no-repeat bottom right;
+  background-size: 2.18rem 2.35rem;
+}
+.meeting_data_icon3{
+  background: #003b83 url(../img/meeting_data_bg_icon3.png) no-repeat bottom right;
+  background-size: 2.18rem 2.35rem;
+}
+.meeting_data_icon4{
+  background: #003b83 url(../img/meeting_data_bg_icon4.png) no-repeat bottom right;
+  background-size: 2.18rem 2.35rem;
+}
+.meeting_data_icon5{
+  background: #003b83 url(../img/meeting_data_bg_icon5.png) no-repeat bottom right;
+  background-size: 2.18rem 2.35rem;
+}
+.meeting_hints_icon1{
+  background: #003b83 url(../img/meeting_hints_bg_icon1.png) no-repeat bottom right;
+  background-size: 2.18rem 3.07rem;
+}
+.meeting_hints_icon2{
+  background: #003b83 url(../img/meeting_hints_bg_icon2.png) no-repeat bottom right;
+  background-size: 2.18rem 3.07rem;
+}
+.meeting_hints_icon3{
+  background: #003b83 url(../img/meeting_hints_bg_icon3.png) no-repeat bottom right;
+  background-size: 2.18rem 3.07rem;
+}
+.meeting_hints_icon4{
+  background: #003b83 url(../img/meeting_hints_bg_icon4.png) no-repeat bottom right;
+  background-size: 2.18rem 3.07rem;
+}
+.meeting_hints_icon5{
+  background: #003b83 url(../img/meeting_hints_bg_icon5.png) no-repeat bottom right;
+  background-size: 2.18rem 3.07rem;
+}
