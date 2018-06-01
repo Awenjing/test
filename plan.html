@@ -35,10 +35,11 @@
 </div>-->
 <div class="page">
   <div class="pinch-zoom">
-    <span class="close" style="position: relative;top:0;right:0;color: #fff;font-size: .6rem">×</span>
+
     <img src="./img/plan.png " alt="" class="pic_big">
   </div>
 </div>
+<idv class="close">×</idv>
 </body>
 <script src="./js/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="./js/rem.js" type="text/javascript"></script>
@@ -47,17 +48,20 @@
 <script type="text/javascript">
   $(function(){
     $('.page').hide();
+    $('.close').hide();
       $('.pic_small').click(function (e) {
-        $('.page').show()
+        $('.page').show();
+        $('.close').show();
         $('div.pinch-zoom').each(function () {
           new RTP.PinchZoom($(this), {});
+          $('.pinch-zoom-container').css(innerHeight,"100%")
         });
       });
 
     $('.close').click(function (e) {
-      $('.page').hide()
+      $('.page').hide();
+      $('.close').hide();
     });
-    // new PinchZoom($('.pinch-zoom'),{})
 
   });
 </script>
