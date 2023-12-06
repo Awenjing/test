@@ -17,68 +17,74 @@
 <br>
 <div id="allmap" style="width: 100%; height: 400px;"></div>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=kz26jZQiN4x1rkRAQhW0vTcnUet34OsD"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?type=webgl&v=1.0&ak=kz26jZQiN4x1rkRAQhW0vTcnUet34OsD"></script>
 <!--<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=2EWGBqHFvYho6e3BGr5yaHTbS0SC86XI"></script>/-->
 
 <script>
-   function getOriLoc(){
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(showPosition,showErr)
-    }else{
+  function getOriLoc() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showErr)
+    } else {
       alert('浏览器不支持定位')
     }
   }
-  var x = document.getElementById("demo");
 
-
-  function init(){
-    //地图初始化
-    var bm = new BMap.Map("allmap");
-    bm.centerAndZoom(gpsPoint, 15);
-    bm.addControl(new BMap.ZoomControl());
-
-    //添加gps marker和label
-    var markergg = new BMap.Marker(ggPoint);
-    bm.addOverlay(markergg); //添加GPS marker
-    var labelgg = new BMap.Label("未转换的GPS坐标（错误）",{offset:new BMap.Size(10, -10)});
-    markergg.setLabel(labelgg); //添加GPS label
-  }
   var gpsPoint
-  function showPosition(position){
-        console.log(position.coords.latitude,position.coords.longitude);
-    $("demo").html("纬度: " + position.coords.latitude +
+
+  function showPosition(position) {
+    console.log(position.coords.latitude, position.coords.longitude);
+    $("#demo")[0].innerHTML = "纬度: " + position.coords.latitude +
       "<br>经度: " + position.coords.longitude +
       "<br>位置精度: " + position.coords.accuracy +
       "<br>海拔: " + position.coords.altitude +
       "<br>位置的海拔精度: " + position.coords.altitudeAccuracy +
       "<br>方向: " + position.coords.heading +
-      "<br>速度: " + position.coords.speed);
+      "<br>速度: " + position.coords.speed;
 
-    console.log(position);
     let x = position.coords.latitude
     let y = position.coords.longitude
-    gpsPoint = new BMap.Point(y,x)
-
-    setTimeout(function (){
-      var convertor = new BMap.Convertor();
-      var pointArr = [];
-      pointArr.push(gpsPoint);
-      convertor.translate(pointArr, 1, 5, translateCallback)
-    })
+    gpsPoint = new BMapGL.Point(y, x)
+    baidu()
   }
 
-  var translateCallback = function (data){
- if(data.status === 0) {
-      var marker = new BMap.Marker(data.points[0]);
-      bm.addOverlay(marker);
-      var label = new BMap.Label("转换后的百度坐标（正确）",{offset:new BMap.Size(10, -10)});
-      marker.setLabel(label); //添加百度label
-      bm.setCenter(data.points[0]);
+  function baidu(){
+    // // 百度地图API功能
+    // //GPS坐标
+    // var x = 116.32715863448607;
+    // var y = 39.990912172420714;
+    // var ggPoint = new BMapGL.Point(x, y);
+
+    //地图初始化
+    var bm = new BMapGL.Map("allmap");
+    bm.centerAndZoom(ggPoint, 17);
+    bm.addControl(new BMapGL.ZoomControl());
+
+    //添加gps marker和label
+    var markergg = new BMapGL.Marker(ggPoint);
+    bm.addOverlay(markergg); //添加GPS marker
+    var labelgg = new BMapGL.Label("未转换的GPS坐标（错误）", {offset: new BMapGL.Size(10, -10)});
+
+
+
+    var translateCallback = function (data) {
+      if(data.status === 0) {
+        var marker = new BMapGL.Marker(data.points[0]);
+        bm.addOverlay(marker);
+        var label = new BMapGL.Label("转换后的百度坐标（正确）", {offset: new BMapGL.Size(10, -10)});
+        marker.setLabel(label); //添加百度label
+        bm.setCenter(data.points[0])
+      }
     }
-    init()
+
+    setTimeout(function() {
+      var convertor = new BMapGL.Convertor();
+      var pointArr = [];
+      pointArr.push(ggPoint);
+      convertor.translate(pointArr, 1, 5, translateCallback)
+    },1000)
   }
 
-  function showErr(error){
+  function showErr(error) {
     console.log(error);
     switch (error.code) {
       case error.PERMISSION_DENIED:
