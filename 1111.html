@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+  <script>
+    new window.VConsole();
+  </script>
+</head>
+<body>
+<div style="padding: 50px">
+  <input type="button" value="获取定位" onclick="getOriLoc()"/>
+  <p id="demo">点击按钮获取您当前坐标：</p>
+</div>
+<br>
+<div id="allmap" style="width: 100%; height: 400px;"></div>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=kz26jZQiN4x1rkRAQhW0vTcnUet34OsD"></script>
+<!--<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=2EWGBqHFvYho6e3BGr5yaHTbS0SC86XI"></script>/-->
+
+<script>
+  (function (){
+    // var map = new BMapGL.Map("allmap");
+    // var point = new BMapGL.Point(116.331398,39.897445);
+    // map.centerAndZoom(point,12);
+
+
+  /*  const geolocation = new window.BMap.Geolocation();
+    // 开启SDK辅助定位
+    geolocation.enableSDKLocation();
+    geolocation.getCurrentPosition((r) => {
+      console.log(r);
+
+        $(".p").html(`'您的位置：${r.point.lng},${r.point.lat}`)
+
+
+    });*/
+  })()
+
+    function getLocation() {
+      // 创建地图实例
+      var map = new BMap.Map("mapContainer");
+
+      // 创建定位控件实例
+      var geolocation = new BMap.Geolocation();
+
+      // 开启定位控件
+      geolocation.enableSDKLocation();
+
+      // 获取当前位置
+      geolocation.getCurrentPosition(function(r){
+        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+          // 获取经纬度信息
+          var lng = r.point.lng;
+          var lat = r.point.lat;
+
+          $("#jingdu").val(lng);//回填经度
+          $("#weidu").val(lat);//回填维度
+          // 在地图上标注当前位置
+          var marker = new BMap.Marker(r.point);
+          map.addOverlay(marker);
+
+          // 居中显示地图，并设置缩放级别
+          map.centerAndZoom(r.point, 18);
+
+          // 在信息窗口中显示经纬度信息
+          var infoWindow = new BMap.InfoWindow("经度: " + lng + "<br>纬度: " + lat);
+          marker.addEventListener("click", function(){
+            this.openInfoWindow(infoWindow);
+          });
+
+        }
+        else {
+          alert("无法获取当前位置信息。");
+        }
+      },{enableHighAccuracy: true});
+
+    }
+
+   function getOriLoc(){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(showPosition,showErr)
+    }else{
+      alert('浏览器不支持定位')
+    }
+  }
+  var x = document.getElementById("demo");
+
+
+  function init(){
+    //地图初始化
+    var bm = new BMapGL.Map("allmap");
+    bm.centerAndZoom(gpsPoint, 15);
+    bm.addControl(new BMapGL.ZoomControl());
+
+    //添加gps marker和label
+    var markergg = new BMapGL.Marker(ggPoint);
+    bm.addOverlay(markergg); //添加GPS marker
+    var labelgg = new BMapGL.Label("未转换的GPS坐标（错误）",{offset:new BMapGL.Size(10, -10)});
+    markergg.setLabel(labelgg); //添加GPS label
+  }
+  var gpsPoint
+  function showPosition(position){
+    x.innerHTML = "纬度: " + position.coords.latitude +
+      "<br>经度: " + position.coords.longitude +
+      "<br>位置精度: " + position.coords.accuracy +
+      "<br>海拔: " + position.coords.altitude +
+      "<br>位置的海拔精度: " + position.coords.altitudeAccuracy +
+      "<br>方向: " + position.coords.heading +
+      "<br>速度: " + position.coords.speed;
+
+    console.log(position);
+    let x = position.coords.latitude
+    let y = position.coords.longitude
+    gpsPoint = new BMap.Point(y,x)
+
+    setTimeout(function (){
+      var convertor = new BMap.Convertor();
+      var pointArr = [];
+      pointArr.push(gpsPoint);
+      convertor.translate(pointArr, 1, 5, translateCallback)
+    })
+  }
+
+  var translateCallback = function (data){
+    if(data.status === 0) {
+      var marker = new BMapGL.Marker(data.points[0]);
+      bm.addOverlay(marker);
+      var label = new BMapGL.Label("转换后的百度坐标（正确）",{offset:new BMapGL.Size(10, -10)});
+      marker.setLabel(label); //添加百度label
+      bm.setCenter(data.points[0]);
+    }
+    init()
+
+    // var point = data.points[0];
+    // var lng = data.points[0].lng;
+    // var lat = data.points[0].lat;
+    // $("#jingdu").val(lng);//回填经度
+    // $("#weidu").val(lat);//回填维度
+    // // 在地图上标注当前位置
+    // var marker = new BMap.Marker(point);
+    // map.addOverlay(marker);
+    //
+    // // 居中显示地图，并设置缩放级别
+    // map.centerAndZoom(point, 18);
+    //
+    // // 在信息窗口中显示经纬度信息
+    // var infoWindow = new BMap.InfoWindow("经度: " + lng + "<br>纬度: " + lat);
+    // marker.addEventListener("click", function(){
+    //   this.openInfoWindow(infoWindow);
+    // });
+  }
+
+  function showErr(error){
+    console.log(error);
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        x.innerHTML = "用户拒绝对获取地理位置的请求。"
+        break;
+      case error.POSITION_UNAVAILABLE:
+        x.innerHTML = "位置信息是不可用的。"
+        break;
+      case error.TIMEOUT:
+        x.innerHTML = "请求用户地理位置超时。"
+        break;
+      case error.UNKNOWN_ERROR:
+        x.innerHTML = "未知错误。"
+        break;
+    }
+  }
+</script>
+</body>
+</html>
