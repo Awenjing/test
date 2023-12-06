@@ -21,64 +21,6 @@
 <!--<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=2EWGBqHFvYho6e3BGr5yaHTbS0SC86XI"></script>/-->
 
 <script>
-  (function (){
-    // var map = new BMapGL.Map("allmap");
-    // var point = new BMapGL.Point(116.331398,39.897445);
-    // map.centerAndZoom(point,12);
-
-
-  /*  const geolocation = new window.BMap.Geolocation();
-    // 开启SDK辅助定位
-    geolocation.enableSDKLocation();
-    geolocation.getCurrentPosition((r) => {
-      console.log(r);
-
-        $(".p").html(`'您的位置：${r.point.lng},${r.point.lat}`)
-
-
-    });*/
-  })()
-
-    function getLocation() {
-      // 创建地图实例
-      var map = new BMap.Map("mapContainer");
-
-      // 创建定位控件实例
-      var geolocation = new BMap.Geolocation();
-
-      // 开启定位控件
-      geolocation.enableSDKLocation();
-
-      // 获取当前位置
-      geolocation.getCurrentPosition(function(r){
-        if(this.getStatus() == BMAP_STATUS_SUCCESS){
-          // 获取经纬度信息
-          var lng = r.point.lng;
-          var lat = r.point.lat;
-
-          $("#jingdu").val(lng);//回填经度
-          $("#weidu").val(lat);//回填维度
-          // 在地图上标注当前位置
-          var marker = new BMap.Marker(r.point);
-          map.addOverlay(marker);
-
-          // 居中显示地图，并设置缩放级别
-          map.centerAndZoom(r.point, 18);
-
-          // 在信息窗口中显示经纬度信息
-          var infoWindow = new BMap.InfoWindow("经度: " + lng + "<br>纬度: " + lat);
-          marker.addEventListener("click", function(){
-            this.openInfoWindow(infoWindow);
-          });
-
-        }
-        else {
-          alert("无法获取当前位置信息。");
-        }
-      },{enableHighAccuracy: true});
-
-    }
-
    function getOriLoc(){
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(showPosition,showErr)
@@ -103,13 +45,14 @@
   }
   var gpsPoint
   function showPosition(position){
-    x.innerHTML = "纬度: " + position.coords.latitude +
+        console.log(position);
+    $("demo").html("纬度: " + position.coords.latitude +
       "<br>经度: " + position.coords.longitude +
       "<br>位置精度: " + position.coords.accuracy +
       "<br>海拔: " + position.coords.altitude +
       "<br>位置的海拔精度: " + position.coords.altitudeAccuracy +
       "<br>方向: " + position.coords.heading +
-      "<br>速度: " + position.coords.speed;
+      "<br>速度: " + position.coords.speed);
 
     console.log(position);
     let x = position.coords.latitude
