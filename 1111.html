@@ -33,19 +33,19 @@
 
   function init(){
     //地图初始化
-    var bm = new BMapGL.Map("allmap");
+    var bm = new BMap.Map("allmap");
     bm.centerAndZoom(gpsPoint, 15);
-    bm.addControl(new BMapGL.ZoomControl());
+    bm.addControl(new BMap.ZoomControl());
 
     //添加gps marker和label
-    var markergg = new BMapGL.Marker(ggPoint);
+    var markergg = new BMap.Marker(ggPoint);
     bm.addOverlay(markergg); //添加GPS marker
-    var labelgg = new BMapGL.Label("未转换的GPS坐标（错误）",{offset:new BMapGL.Size(10, -10)});
+    var labelgg = new BMap.Label("未转换的GPS坐标（错误）",{offset:new BMap.Size(10, -10)});
     markergg.setLabel(labelgg); //添加GPS label
   }
   var gpsPoint
   function showPosition(position){
-        console.log(position);
+        console.log(position.coords.latitude,position.coords.longitude);
     $("demo").html("纬度: " + position.coords.latitude +
       "<br>经度: " + position.coords.longitude +
       "<br>位置精度: " + position.coords.accuracy +
@@ -68,32 +68,14 @@
   }
 
   var translateCallback = function (data){
-    if(data.status === 0) {
-      var marker = new BMapGL.Marker(data.points[0]);
+ if(data.status === 0) {
+      var marker = new BMap.Marker(data.points[0]);
       bm.addOverlay(marker);
-      var label = new BMapGL.Label("转换后的百度坐标（正确）",{offset:new BMapGL.Size(10, -10)});
+      var label = new BMap.Label("转换后的百度坐标（正确）",{offset:new BMap.Size(10, -10)});
       marker.setLabel(label); //添加百度label
       bm.setCenter(data.points[0]);
     }
     init()
-
-    // var point = data.points[0];
-    // var lng = data.points[0].lng;
-    // var lat = data.points[0].lat;
-    // $("#jingdu").val(lng);//回填经度
-    // $("#weidu").val(lat);//回填维度
-    // // 在地图上标注当前位置
-    // var marker = new BMap.Marker(point);
-    // map.addOverlay(marker);
-    //
-    // // 居中显示地图，并设置缩放级别
-    // map.centerAndZoom(point, 18);
-    //
-    // // 在信息窗口中显示经纬度信息
-    // var infoWindow = new BMap.InfoWindow("经度: " + lng + "<br>纬度: " + lat);
-    // marker.addEventListener("click", function(){
-    //   this.openInfoWindow(infoWindow);
-    // });
   }
 
   function showErr(error){
